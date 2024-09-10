@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>jxf</groupId>
+        <artifactId>walle-stater</artifactId>
+        <version>1.0.0</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>walle-stater-dubbo</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>jxf</groupId>
+            <artifactId>walle-stater-nacos</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jxf</groupId>
+            <artifactId>walle-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jxf</groupId>
+            <artifactId>walle-stater-web</artifactId>
+        </dependency>
+
+    </dependencies>
+
+</project>

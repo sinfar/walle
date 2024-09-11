@@ -18,6 +18,8 @@
         <module>walle-stater</module>
         <module>walle-stater/walle-stater-web</module>
         <module>walle-stater/walle-stater-mysql</module>
+        <module>walle-service</module>
+        <module>demo</module>
     </modules>
 
     <properties>
@@ -202,6 +204,11 @@
                 <artifactId>walle-stater-nacos</artifactId>
                 <version>${walle.version}</version>
             </dependency>
+            <dependency>
+                <groupId>jxf</groupId>
+                <artifactId>walle-stater-redis</artifactId>
+                <version>${walle.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>com.google.protobuf</groupId>
@@ -242,6 +249,15 @@
                 <version>${okhttps.version}</version>
             </dependency>
             <!--基础组件 end-->
+
+            <!-- spring cloud 依赖 -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>

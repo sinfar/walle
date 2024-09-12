@@ -1,9 +1,0 @@
-spring:
-  application:
-    name: gateway
-  cloud:
-    nacos:
-      config:
-        shared-configs: common-redis.yaml,${spring.application.name}.yaml
-  main:
-    allow-bean-definition-overriding: true

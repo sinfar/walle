@@ -18,6 +18,7 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,6 +36,9 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
         //从Redis中获取当前路径可访问角色列表
         URI uri = authorizationContext.getExchange().getRequest().getURI();
         List<String> authorities = redisClient.hGet("auth.resource_roles_map", uri.getPath());
+        if (authorities == null) {
+            authorities = new ArrayList<>();
+        }
         authorities = authorities.stream().map(i -> i = AuthConstant.AUTHORITY_PREFIX + i).collect(Collectors.toList());
         //认证通过且角色匹配的用户可访问当前路径
         return mono

@@ -17,6 +17,10 @@
             <groupId>jxf</groupId>
             <artifactId>walle-stater-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>jxf</groupId>
+            <artifactId>walle-stater-nacos</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

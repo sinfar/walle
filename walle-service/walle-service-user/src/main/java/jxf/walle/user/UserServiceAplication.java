@@ -1,3 +1,5 @@
+package jxf.walle.user;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -6,8 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Data:2024/8/7
  */
 @SpringBootApplication
-public class ApiServiceAplication {
+public class UserServiceAplication {
     public static void main(String[] args) {
-        SpringApplication.run(ApiServiceAplication.class, args);
+        SpringApplication.run(UserServiceAplication.class, args);
     }
 }

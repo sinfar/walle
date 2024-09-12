@@ -26,7 +26,7 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         String token = exchange.getRequest().getHeaders().getFirst("Authorization");
-        if (StringUtils.isEmpty(token) && !token.startsWith("Basic")) {
+        if (StringUtils.isEmpty(token) || token.startsWith("Basic")) {
             return chain.filter(exchange);
         }
         try {

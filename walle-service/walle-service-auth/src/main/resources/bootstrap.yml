@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: auth
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      config:
+        shared-configs: ${spring.application.name}.yaml,common-redis.yaml

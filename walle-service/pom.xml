@@ -13,6 +13,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>walle-service.gateway</module>
+        <module>walle-service-auth</module>
+        <module>walle-service-user</module>
     </modules>
 
     <properties>

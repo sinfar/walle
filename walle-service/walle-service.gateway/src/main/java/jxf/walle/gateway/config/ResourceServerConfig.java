@@ -1,6 +1,5 @@
 package jxf.walle.gateway.config;
 
-import cn.hutool.core.util.ArrayUtil;
 import jxf.walle.gateway.service.AuthorizationManager;
 import jxf.walle.gateway.service.RestAuthenticationEntryPoint;
 import jxf.walle.gateway.service.RestfulAccessDeniedHandler;
@@ -36,7 +35,7 @@ public class ResourceServerConfig {
         http.oauth2ResourceServer().jwt()
                 .jwtAuthenticationConverter(jwtAuthenticationConverter());
         http.authorizeExchange()
-                .pathMatchers(ArrayUtil.toArray(ignoreUrlsConfig.getUrls(),String.class)).permitAll()//白名单配置
+                .pathMatchers(ignoreUrlsConfig.getUrls().toArray(new String[0])).permitAll()//白名单配置
                 .anyExchange().access(authorizationManager)//鉴权管理器配置
                 .and().exceptionHandling()
                 .accessDeniedHandler(restfulAccessDeniedHandler)//处理未授权

@@ -1,7 +1,7 @@
 package jxf.walle.gateway.service;
 
-import cn.hutool.core.util.StrUtil;
 import com.nimbusds.jose.JWSObject;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
@@ -26,7 +26,7 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         String token = exchange.getRequest().getHeaders().getFirst("Authorization");
-        if (StrUtil.isEmpty(token) && !token.startsWith("Basic")) {
+        if (StringUtils.isEmpty(token) && !token.startsWith("Basic")) {
             return chain.filter(exchange);
         }
         try {

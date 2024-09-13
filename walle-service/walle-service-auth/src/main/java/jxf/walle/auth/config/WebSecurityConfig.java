@@ -24,15 +24,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll()
                 // 允许访问 RSA 公钥的接口
                 .antMatchers("/rsa/publicKey").permitAll()
-                // 允许访问 Knife4j 的所有相关路径
-                .antMatchers(
-                        "/doc.html",           // Knife4j 文档页面
-                        "/v2/api-docs",        // Swagger 2.0 API 文档
-                        "/v3/api-docs/**",     // OpenAPI 3.0 API 文档
-                        "/swagger-resources/**",
-                        "/swagger-ui/**",      // Swagger UI 静态资源
-                        "/webjars/**"          // 静态资源
-                ).permitAll()
                 .anyRequest().authenticated();
     }
 

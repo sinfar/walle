@@ -24,8 +24,8 @@ public class ResourceServiceImpl {
     @PostConstruct
     public void initData() {
         resourceRolesMap = new TreeMap<>();
-        resourceRolesMap.put("/api/hello", Arrays.asList("ADMIN"));
-        resourceRolesMap.put("/api/user/currentUser", Arrays.asList("ADMIN", "TEST"));
+        resourceRolesMap.put("/user/hello", Arrays.asList("ADMIN"));
+        resourceRolesMap.put("/user/user/currentUser", Arrays.asList("ADMIN", "TEST"));
         redisClent.hSet("auth.resource_roles_map", resourceRolesMap);
     }
 }

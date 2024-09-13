@@ -17,14 +17,12 @@ import java.util.Map;
  * Created by macro on 2020/6/19.
  */
 @RestController
-@Api(tags = "Key Pair Management")
 public class KeyPairController {
 
     @Autowired
     private KeyPair keyPair;
 
     @GetMapping("/rsa/publicKey")
-    @ApiOperation(value = "Get RSA Public Key", notes = "This API returns the RSA public key.")
     public Map<String, Object> getKey() {
         RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
         RSAKey key = new RSAKey.Builder(publicKey).build();

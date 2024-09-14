@@ -1,5 +1,6 @@
 package jxf.walle.auth.service;
 
+import jxf.walle.auth.constant.RedisKeyConstant;
 import jxf.walle.redis.RedisClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,8 @@ public class ResourceServiceImpl {
         resourceRolesMap = new TreeMap<>();
         resourceRolesMap.put("/user/hello", Arrays.asList("ADMIN"));
         resourceRolesMap.put("/user/user/currentUser", Arrays.asList("ADMIN", "TEST"));
-        redisClent.hSet("auth.resource_roles_map", resourceRolesMap);
+
+        String redisKey = RedisKeyConstant.resourceRolesMapKey();
+        redisClent.hSet(redisKey, resourceRolesMap);
     }
 }

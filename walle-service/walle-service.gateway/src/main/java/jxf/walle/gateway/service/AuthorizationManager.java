@@ -34,7 +34,7 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
     public Mono<AuthorizationDecision> check(Mono<Authentication> mono, AuthorizationContext authorizationContext) {
         //从Redis中获取当前路径可访问角色列表
         URI uri = authorizationContext.getExchange().getRequest().getURI();
-        List<String> authorities = redisClient.hGet("auth.resource_roles_map", uri.getPath());
+        List<String> authorities = redisClient.hGet("auth:resourceRolesMap", uri.getPath());
         if (authorities == null) {
             authorities = new ArrayList<>();
         }

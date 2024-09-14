@@ -21,10 +21,9 @@
             <groupId>jxf</groupId>
             <artifactId>walle-stater-redis</artifactId>
         </dependency>
-
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>jxf</groupId>
+            <artifactId>walle-stater-web</artifactId>
         </dependency>
 
         <dependency>

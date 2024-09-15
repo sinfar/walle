@@ -68,12 +68,10 @@ public class UserServiceImpl implements UserDetailsService {
 
     /**
      * 短信验证码方式
-     *
-     * @param dto
      * @return
      */
     public UserDetails loadUserByMobile(String mobile) {
-        List<UserDTO> findUserList = userList.stream().filter(item -> item.getUsername().equals(mobile)).collect(Collectors.toList());
+        List<UserDTO> findUserList = userList.stream().filter(item -> item.getMobile().equals(mobile)).collect(Collectors.toList());
         if (CollectionUtils.isEmpty(findUserList)) {
             throw new UsernameNotFoundException("未找到用户");
         }

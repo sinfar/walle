@@ -6,4 +6,4 @@ spring:
   cloud:
     nacos:
       config:
-        shared-configs: ${spring.application.name}.yaml,common-redis.yaml
+        shared-configs: ${spring.application.name}.yaml,common-redis.yaml,common-db.yaml

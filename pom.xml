@@ -209,6 +209,16 @@
                 <artifactId>walle-stater-redis</artifactId>
                 <version>${walle.version}</version>
             </dependency>
+            <dependency>
+                <groupId>jxf</groupId>
+                <artifactId>walle-stater-mysql</artifactId>
+                <version>${walle.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>jxf</groupId>
+                <artifactId>walle-stater-rocketmq</artifactId>
+                <version>${walle.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>com.google.protobuf</groupId>

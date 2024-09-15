@@ -31,7 +31,7 @@ public class FeignExceptionHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ResultWrapper<Void> handleException(FeignException exception) {
         // 打印堆栈信息
-        log.error("❌远程调用时发生系统异常，ℹ原始异常信息：【{}】", exception.getMessage());
+        log.error("远程调用时发生系统异常，ℹ原始异常信息：【{}】", exception.getMessage());
         return ResultWrapper.fail(BaseResultCodeEnum.INTERFACE_SYSTEM_ERROR, "原始异常信息：" + exception.getMessage());
     }
 
@@ -46,7 +46,7 @@ public class FeignExceptionHandler {
             return ResultWrapper.fail(bizException.getCode(), bizException.getMsg());
         }
         // 否则打印错误日志并返回
-        log.error("❌远程调用结束解析返回值时出现异常", exception);
+        log.error("远程调用结束解析返回值时出现异常", exception);
         return ResultWrapper.fail(BaseResultCodeEnum.SYSTEM_ERROR, exception.getMessage());
     }
 

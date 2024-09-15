@@ -16,7 +16,7 @@ public enum BaseResultCodeEnum implements IResultCode, IDict<String> {
 
     BIZ_ERROR("BIZ_ERROR", "业务处理异常"),
 
-    SYSTEM_ERROR("SYSTEM_ERROR", "❌系统异常"),
+    SYSTEM_ERROR("SYSTEM_ERROR", "系统异常"),
 
     INTERFACE_SYSTEM_ERROR("INTERFACE_SYSTEM_ERROR", "外部接口调用异常"),
 

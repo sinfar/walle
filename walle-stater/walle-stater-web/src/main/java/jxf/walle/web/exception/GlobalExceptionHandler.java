@@ -65,7 +65,7 @@ public class GlobalExceptionHandler {
         String errorMsg = e.getFieldErrors().stream()
                 .map(error -> "[" + error.getField() + "]" + error.getDefaultMessage())
                 .collect(Collectors.joining(","));
-        log.error("❌接口入参异常，uri：{}，异常信息：{}", RequestUtil.getRequestInfo(), errorMsg);
+        log.error("接口入参异常，uri：{}，异常信息：{}", RequestUtil.getRequestInfo(), errorMsg);
         return ResultWrapper.fail(BaseResultCodeEnum.ILLEGAL_ARGUMENT, errorMsg);
     }
 
@@ -78,7 +78,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = HttpMessageNotReadableException.class)
     public ResultWrapper<Void> handleException(HttpMessageNotReadableException e) {
         String rootCauseMessage = ExceptionUtils.getRootCauseMessage(e);
-        log.error("❌接口入参异常，uri：{}，异常信息：{}", RequestUtil.getRequestInfo(), rootCauseMessage);
+        log.error("接口入参异常，uri：{}，异常信息：{}", RequestUtil.getRequestInfo(), rootCauseMessage);
         return ResultWrapper.fail(BaseResultCodeEnum.ILLEGAL_ARGUMENT, rootCauseMessage);
     }
 
@@ -94,7 +94,7 @@ public class GlobalExceptionHandler {
         String errMsg = violations.stream()
                 .map(violation -> ((PathImpl) violation.getPropertyPath()).getLeafNode().getName() + violation.getMessage())
                 .collect(Collectors.joining(";"));
-        log.error("❌参数校验异常：{}", errMsg);
+        log.error("参数校验异常：{}", errMsg);
         return ResultWrapper.fail(BaseResultCodeEnum.ILLEGAL_ARGUMENT, errMsg);
     }
 
@@ -108,7 +108,7 @@ public class GlobalExceptionHandler {
     public ResultWrapper<Void> exceptionHandler2(MethodArgumentNotValidException e) {
         List<ObjectError> allErrors = e.getBindingResult().getAllErrors();
         String errMsg = allErrors.stream().map(error -> ((FieldError) error).getField() + error.getDefaultMessage()).collect(Collectors.joining(";"));
-        log.error("❌参数校验异常：{}", errMsg);
+        log.error("参数校验异常：{}", errMsg);
         return ResultWrapper.fail(BaseResultCodeEnum.ILLEGAL_ARGUMENT, errMsg);
     }
 
@@ -121,7 +121,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = MethodArgumentTypeMismatchException.class)
     public ResultWrapper<Void> handleException(MethodArgumentTypeMismatchException e) {
         String errorMsg = "Parameter \"" + e.getName() + "\" " + e.getMessage();
-        log.error("❌接口入参类型异常，uri：{}，异常信息：{}", RequestUtil.getRequestInfo(), errorMsg);
+        log.error("接口入参类型异常，uri：{}，异常信息：{}", RequestUtil.getRequestInfo(), errorMsg);
         return ResultWrapper.fail(BaseResultCodeEnum.ILLEGAL_ARGUMENT, errorMsg);
     }
 
@@ -133,7 +133,7 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
     @ExceptionHandler(value = HttpRequestMethodNotSupportedException.class)
     public ResultWrapper<Void> handleException(HttpRequestMethodNotSupportedException e) {
-        log.error("❌接口请求方式错误，uri：{}，异常信息：{}", RequestUtil.getRequestInfo(), e.getMessage());
+        log.error("接口请求方式错误，uri：{}，异常信息：{}", RequestUtil.getRequestInfo(), e.getMessage());
         return ResultWrapper.fail(BaseResultCodeEnum.METHOD_NOT_ALLOWED, e.getMessage());
     }
 
@@ -146,7 +146,7 @@ public class GlobalExceptionHandler {
     public ResultWrapper<Void> handleException(Exception exception) {
         // 打印堆栈信息
         String exceptionMsgWithStack = getExceptionMsgWithStack(exception);
-        log.error("❌系统异常，请排查代码或数据，\uD83D\uDD17uri：{}，ℹ异常信息：{}", RequestUtil.getRequestInfo(), exceptionMsgWithStack, exception);
+        log.error("系统异常，请排查代码或数据，\uD83D\uDD17uri：{}，ℹ异常信息：{}", RequestUtil.getRequestInfo(), exceptionMsgWithStack, exception);
         // 生产上为了安全不响应给客户端，其他环境可以返回以提高排查效率
         return ResultWrapper.fail(BaseResultCodeEnum.SYSTEM_ERROR, SpringContextUtil.isProd() ? "" : exceptionMsgWithStack);
     }

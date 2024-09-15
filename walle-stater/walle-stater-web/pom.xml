@@ -7,7 +7,7 @@
         <groupId>jxf</groupId>
         <artifactId>walle-stater</artifactId>
         <version>1.0.0</version>
-        <relativePath>../pom.xml</relativePath>
+
     </parent>
 
     <artifactId>walle-stater-web</artifactId>

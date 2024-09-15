@@ -6,7 +6,6 @@
         <groupId>jxf</groupId>
         <artifactId>walle</artifactId>
         <version>1.0.0</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
     <groupId>jxf</groupId>
     <artifactId>walle-common</artifactId>

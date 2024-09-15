@@ -72,6 +72,7 @@ public enum BaseResultCodeEnum implements IResultCode, IDict<String> {
     }
 
 
+
     @Override
     public String getCode() {
         return IDict.super.getCode();

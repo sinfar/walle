@@ -1,7 +1,7 @@
 package jxf.walle.feign;
 
 import feign.codec.DecodeException;
-import jxf.walle.common.exception.BaseResultCodeEnum;
+import jxf.walle.common.exception.BaseErrorCode;
 import jxf.walle.common.exception.BizException;
 import jxf.walle.common.result.ResultWrapper;
 import jxf.walle.feign.exception.FeignException;
@@ -32,7 +32,7 @@ public class FeignExceptionHandler {
     public ResultWrapper<Void> handleException(FeignException exception) {
         // 打印堆栈信息
         log.error("远程调用时发生系统异常，ℹ原始异常信息：【{}】", exception.getMessage());
-        return ResultWrapper.fail(BaseResultCodeEnum.INTERFACE_SYSTEM_ERROR, "原始异常信息：" + exception.getMessage());
+        return ResultWrapper.fail(BaseErrorCode.INTERFACE_SYSTEM_ERROR, "原始异常信息：" + exception.getMessage());
     }
 
 
@@ -47,7 +47,7 @@ public class FeignExceptionHandler {
         }
         // 否则打印错误日志并返回
         log.error("远程调用结束解析返回值时出现异常", exception);
-        return ResultWrapper.fail(BaseResultCodeEnum.SYSTEM_ERROR, exception.getMessage());
+        return ResultWrapper.fail(BaseErrorCode.SYSTEM_ERROR, exception.getMessage());
     }
 
 }

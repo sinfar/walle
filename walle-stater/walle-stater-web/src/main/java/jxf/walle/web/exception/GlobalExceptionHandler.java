@@ -1,7 +1,7 @@
 package jxf.walle.web.exception;
 
 
-import jxf.walle.common.exception.BaseResultCodeEnum;
+import jxf.walle.common.exception.BaseErrorCode;
 import jxf.walle.common.exception.BizException;
 import jxf.walle.common.result.ResultWrapper;
 import jxf.walle.common.utils.SpringContextUtil;
@@ -66,7 +66,7 @@ public class GlobalExceptionHandler {
                 .map(error -> "[" + error.getField() + "]" + error.getDefaultMessage())
                 .collect(Collectors.joining(","));
         log.error("接口入参异常，uri：{}，异常信息：{}", RequestUtil.getRequestInfo(), errorMsg);
-        return ResultWrapper.fail(BaseResultCodeEnum.ILLEGAL_ARGUMENT, errorMsg);
+        return ResultWrapper.fail(BaseErrorCode.ILLEGAL_ARGUMENT, errorMsg);
     }
 
     /**
@@ -79,7 +79,7 @@ public class GlobalExceptionHandler {
     public ResultWrapper<Void> handleException(HttpMessageNotReadableException e) {
         String rootCauseMessage = ExceptionUtils.getRootCauseMessage(e);
         log.error("接口入参异常，uri：{}，异常信息：{}", RequestUtil.getRequestInfo(), rootCauseMessage);
-        return ResultWrapper.fail(BaseResultCodeEnum.ILLEGAL_ARGUMENT, rootCauseMessage);
+        return ResultWrapper.fail(BaseErrorCode.ILLEGAL_ARGUMENT, rootCauseMessage);
     }
 
     /**
@@ -95,7 +95,7 @@ public class GlobalExceptionHandler {
                 .map(violation -> ((PathImpl) violation.getPropertyPath()).getLeafNode().getName() + violation.getMessage())
                 .collect(Collectors.joining(";"));
         log.error("参数校验异常：{}", errMsg);
-        return ResultWrapper.fail(BaseResultCodeEnum.ILLEGAL_ARGUMENT, errMsg);
+        return ResultWrapper.fail(BaseErrorCode.ILLEGAL_ARGUMENT, errMsg);
     }
 
     /**
@@ -109,7 +109,7 @@ public class GlobalExceptionHandler {
         List<ObjectError> allErrors = e.getBindingResult().getAllErrors();
         String errMsg = allErrors.stream().map(error -> ((FieldError) error).getField() + error.getDefaultMessage()).collect(Collectors.joining(";"));
         log.error("参数校验异常：{}", errMsg);
-        return ResultWrapper.fail(BaseResultCodeEnum.ILLEGAL_ARGUMENT, errMsg);
+        return ResultWrapper.fail(BaseErrorCode.ILLEGAL_ARGUMENT, errMsg);
     }
 
     /**
@@ -122,7 +122,7 @@ public class GlobalExceptionHandler {
     public ResultWrapper<Void> handleException(MethodArgumentTypeMismatchException e) {
         String errorMsg = "Parameter \"" + e.getName() + "\" " + e.getMessage();
         log.error("接口入参类型异常，uri：{}，异常信息：{}", RequestUtil.getRequestInfo(), errorMsg);
-        return ResultWrapper.fail(BaseResultCodeEnum.ILLEGAL_ARGUMENT, errorMsg);
+        return ResultWrapper.fail(BaseErrorCode.ILLEGAL_ARGUMENT, errorMsg);
     }
 
     /**
@@ -134,7 +134,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = HttpRequestMethodNotSupportedException.class)
     public ResultWrapper<Void> handleException(HttpRequestMethodNotSupportedException e) {
         log.error("接口请求方式错误，uri：{}，异常信息：{}", RequestUtil.getRequestInfo(), e.getMessage());
-        return ResultWrapper.fail(BaseResultCodeEnum.METHOD_NOT_ALLOWED, e.getMessage());
+        return ResultWrapper.fail(BaseErrorCode.METHOD_NOT_ALLOWED, e.getMessage());
     }
 
     /**
@@ -148,7 +148,7 @@ public class GlobalExceptionHandler {
         String exceptionMsgWithStack = getExceptionMsgWithStack(exception);
         log.error("系统异常，请排查代码或数据，\uD83D\uDD17uri：{}，ℹ异常信息：{}", RequestUtil.getRequestInfo(), exceptionMsgWithStack, exception);
         // 生产上为了安全不响应给客户端，其他环境可以返回以提高排查效率
-        return ResultWrapper.fail(BaseResultCodeEnum.SYSTEM_ERROR, SpringContextUtil.isProd() ? "" : exceptionMsgWithStack);
+        return ResultWrapper.fail(BaseErrorCode.SYSTEM_ERROR, SpringContextUtil.isProd() ? "" : exceptionMsgWithStack);
     }
 
     /**

@@ -1,6 +1,6 @@
 package jxf.walle.dubbo;
 
-import jxf.walle.common.exception.BaseResultCodeEnum;
+import jxf.walle.common.exception.BaseErrorCode;
 import jxf.walle.common.result.ResultWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.rpc.RpcException;
@@ -30,6 +30,6 @@ public class DubboExceptionHandler {
     @ExceptionHandler(RpcException.class)
     public ResultWrapper<Void> rpcException(RpcException rpcException) {
         log.error("dubbo调用异常", rpcException);
-        return ResultWrapper.fail(BaseResultCodeEnum.SYSTEM_ERROR, "dubbo调用异常:" + rpcException.getMessage());
+        return ResultWrapper.fail(BaseErrorCode.SYSTEM_ERROR, "dubbo调用异常:" + rpcException.getMessage());
     }
 }

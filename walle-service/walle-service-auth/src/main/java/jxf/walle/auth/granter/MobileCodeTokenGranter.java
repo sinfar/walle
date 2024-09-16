@@ -1,7 +1,7 @@
 package jxf.walle.auth.granter;
 
 import jxf.walle.auth.service.UserServiceImpl;
-import jxf.walle.common.exception.BaseResultCodeEnum;
+import jxf.walle.common.exception.BaseErrorCode;
 import jxf.walle.common.exception.BizException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -45,11 +45,11 @@ public class MobileCodeTokenGranter extends AbstractCustomTokenGranter {
 		String mobile = parameters.get("mobile");
 		String code = parameters.get("code");
 		if (mobile == null) {
-			throw new BizException(BaseResultCodeEnum.ILLEGAL_ARGUMENT.getCode(), "手机号码不能为空");
+			throw new BizException(BaseErrorCode.ILLEGAL_ARGUMENT.getCode(), "手机号码不能为空");
 		}
 
 		if (code == null) {
-			throw new BizException(BaseResultCodeEnum.ILLEGAL_ARGUMENT.getCode(), "验证码不能为空");
+			throw new BizException(BaseErrorCode.ILLEGAL_ARGUMENT.getCode(), "验证码不能为空");
 		}
 
 		return userService.loadUserByMobile(mobile);

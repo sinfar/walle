@@ -3,8 +3,8 @@
 #set( $symbol_escape = '\' )
 package ${package}.constant;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Redis key
@@ -12,12 +12,7 @@ import java.util.ArrayList;
  * @author Elvis
  * @date 2021/01/29
  */
-public class RedisConstant {
-
-	/**
-	 * 示例
-	 */
-	private static final String USER = "/users/{userId}";
+public class RedisKey {
 
 	//region private
 
@@ -29,7 +24,7 @@ public class RedisConstant {
 	/**
 	 * 前缀
 	 */
-	private static final String KEY_PREFIX = "isay:DemoService";
+	private static final String KEY_PREFIX = "${rootArtifactId}";
 
 	/**
 	 * 获取key

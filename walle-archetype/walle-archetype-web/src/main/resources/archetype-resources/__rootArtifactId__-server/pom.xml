@@ -13,6 +13,22 @@
 
     <dependencies>
         <dependency>
+            <groupId>jxf</groupId>
+            <artifactId>walle-stater-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jxf</groupId>
+            <artifactId>walle-stater-nacos</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jxf</groupId>
+            <artifactId>walle-stater-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jxf</groupId>
+            <artifactId>walle-stater-mysql</artifactId>
+        </dependency>
+        <dependency>
             <groupId>${groupId}</groupId>
             <artifactId>${rootArtifactId}-api</artifactId>
             <version>${version}</version>

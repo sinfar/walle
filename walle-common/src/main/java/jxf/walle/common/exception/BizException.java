@@ -7,10 +7,10 @@ public class BizException extends RuntimeException {
     private final String code;
     private final String msg;
 
-    public BizException(IResultCode iResultCode) {
-        super(iResultCode.getCode() + iResultCode.getMessage());
-        this.code = iResultCode.getCode();
-        this.msg = iResultCode.getMessage();
+    public BizException(ResultCode resultCode) {
+        super(resultCode.getCode() + resultCode.getMessage());
+        this.code = resultCode.getCode();
+        this.msg = resultCode.getMessage();
     }
 
     public BizException(String code, String message) {
@@ -21,7 +21,7 @@ public class BizException extends RuntimeException {
 
     public BizException(String message) {
         super(message);
-        this.code = BaseResultCodeEnum.BIZ_ERROR.getCode();
+        this.code = BaseErrorCode.BIZ_ERROR.getCode();
         this.msg = message;
     }
 

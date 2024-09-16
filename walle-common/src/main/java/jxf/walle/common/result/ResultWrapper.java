@@ -1,8 +1,8 @@
 package jxf.walle.common.result;
 
 import io.swagger.annotations.ApiModelProperty;
-import jxf.walle.common.exception.BaseResultCodeEnum;
-import jxf.walle.common.exception.IResultCode;
+import jxf.walle.common.exception.BaseErrorCode;
+import jxf.walle.common.exception.ResultCode;
 import lombok.*;
 import org.apache.skywalking.apm.toolkit.trace.Trace;
 import org.apache.skywalking.apm.toolkit.trace.TraceContext;
@@ -33,30 +33,30 @@ public class ResultWrapper<T> {
         this.setTraceId();
     }
 
-    public ResultWrapper(IResultCode resultCode) {
+    public ResultWrapper(ResultCode resultCode) {
         this(resultCode.getCode(), resultCode.getMessage());
     }
 
-    public ResultWrapper(IResultCode resultCode, T data) {
+    public ResultWrapper(ResultCode resultCode, T data) {
         this(resultCode);
         this.data = data;
     }
 
 
     public static <T> ResultWrapper<T> success(T data) {
-        return new ResultWrapper<>(BaseResultCodeEnum.SUCCESS, data);
+        return new ResultWrapper<>(BaseErrorCode.SUCCESS, data);
     }
 
     public static <T> ResultWrapper<T> success() {
-        return new ResultWrapper<>(BaseResultCodeEnum.SUCCESS);
+        return new ResultWrapper<>(BaseErrorCode.SUCCESS);
     }
 
 
-    public static ResultWrapper<Void> fail(IResultCode resultCode, String detailErrorMsg) {
+    public static ResultWrapper<Void> fail(ResultCode resultCode, String detailErrorMsg) {
         return new ResultWrapper<>(resultCode.getCode(), resultCode.getMessage() + "：" + detailErrorMsg);
     }
 
-    public static <T> ResultWrapper<T> fail(IResultCode resultCode) {
+    public static <T> ResultWrapper<T> fail(ResultCode resultCode) {
         return new ResultWrapper<>(resultCode.getCode(), resultCode.getMessage());
     }
 

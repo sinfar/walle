@@ -19,23 +19,4 @@
     <properties>
         <!--这里定义项目版本-->
     </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>jxf</groupId>
-            <artifactId>walle-stater-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>jxf</groupId>
-            <artifactId>walle-stater-nacos</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>jxf</groupId>
-            <artifactId>walle-stater-redis</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>jxf</groupId>
-            <artifactId>walle-stater-mysql</artifactId>
-        </dependency>
-    </dependencies>
 </project>

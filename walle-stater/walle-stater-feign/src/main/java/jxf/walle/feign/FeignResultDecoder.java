@@ -3,7 +3,7 @@ package jxf.walle.feign;
 import feign.FeignException;
 import feign.Response;
 import feign.codec.Decoder;
-import jxf.walle.common.exception.BaseResultCodeEnum;
+import jxf.walle.common.exception.BaseErrorCode;
 import jxf.walle.common.exception.BizException;
 import jxf.walle.common.result.IgnoredResultWrapper;
 import jxf.walle.common.result.ResultWrapper;
@@ -46,7 +46,7 @@ public class FeignResultDecoder implements Decoder {
         } catch (Exception e) {
             return this.decoder.decode(response, type);
         }
-        if (!BaseResultCodeEnum.SUCCESS.getCode().equals(resultWrapper.getCode())) {
+        if (!BaseErrorCode.SUCCESS.getCode().equals(resultWrapper.getCode())) {
             // 此时抛异常会被捕获成DecoderException，会通过FeignExceptionHandler中的decoderException()处理再重新抛出
             throw new BizException(resultWrapper.getCode(), resultWrapper.getMessage());
         }
